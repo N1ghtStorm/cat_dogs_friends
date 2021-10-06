@@ -3920,6 +3920,7 @@ dependencies = [
  "frame-benchmarking",
  "frame-support",
  "frame-system",
+ "pallet-accounts",
  "parity-scale-codec",
  "serde",
  "sp-core",

@@ -96,6 +96,12 @@ decl_module! {
 
         //     Ok(())
         // }
+        #[weight = 10_000]
+        pub fn add_role(origin, role: u8) -> DispatchResult {
+            let caller = ensure_signed(origin)?;
+            Self::account_set(&caller, role);
+            Ok(())
+        }
     }
 }
 
@@ -119,6 +125,10 @@ impl<T: Config> Module<T> {
     /// </pre>
     pub fn account_is_master(acc: &T::AccountId) -> bool {
         AccountRegistry::<T>::get(acc).roles & MASTER_ROLE_MASK != 0
+    }
+
+    pub fn account_is_cat_owner(acc: &T::AccountId) -> bool {
+        AccountRegistry::<T>::get(acc).roles & CAT_OWNER_ROLE_MASK != 0
     }
 
     // pub fn account_is_project_owner(acc: &T::AccountId) -> bool {

@@ -37,8 +37,9 @@ impl<AccountId> Cat<AccountId> {
 	}
 }
 
+pub trait Config: frame_system::Config + pallet_accounts::Config {
 
-pub trait Config: frame_system::Config {}
+}
 
 decl_storage! {
     trait Store for Module<T: Config> as CarbonCredits {
@@ -52,7 +53,7 @@ decl_storage! {
 
 decl_error! {
     pub enum Error for Module<T: Config> {
-
+        OhCrapError
     }
 }
 
@@ -61,6 +62,8 @@ decl_module! {
 		#[weight = 10_000]
         pub fn create_cat(origin, age: u8) -> DispatchResult {
             let caller = ensure_signed(origin)?;
+            ensure!(pallet_accounts::Module::<T>::account_is_cat_owner(&caller), Error::<T>::OhCrapError);
+
 			let new_id = LastID::get() + 1;
 			let new_project = Cat::<<T as frame_system::Config>::AccountId>::new(caller, new_id, age);
 			<CatById<T>>::insert(new_id, new_project);
