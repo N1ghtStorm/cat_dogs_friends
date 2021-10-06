@@ -1,0 +1,12 @@
+{
+    "Cat": {
+        "owner": "AccountId",
+        "id": "u32",
+        "age": "u8"
+    },
+    "Dog": {
+        "owner": "AccountId",
+        "id": "u32",
+        "age": "u8"
+    }
+}
