@@ -5,6 +5,7 @@ members = [
     'pallets/accounts',
     'pallets/cats',
     'pallets/dogs',
+    'pallets/kitties',
     'runtime',
 ]
 [profile.release]

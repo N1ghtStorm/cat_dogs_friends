@@ -41,6 +41,7 @@ std = [
     'pallet-template/std',
     'pallet-dogs/std',
     'pallet-cats/std',
+    'pallet-kitties/std',
     'pallet-accounts/std',
     'pallet-timestamp/std',
     'pallet-transaction-payment-rpc-runtime-api/std',
@@ -237,4 +238,9 @@ version = '3.0.0'
 [dependencies.pallet-accounts]
 default-features = false
 path = '../pallets/accounts'
+version = '3.0.0'
+
+[dependencies.pallet-kitties]
+default-features = false
+path = '../pallets/kitties'
 version = '3.0.0'

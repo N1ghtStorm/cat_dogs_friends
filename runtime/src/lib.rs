@@ -109,7 +109,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 /// up by `pallet_aura` to implement `fn slot_duration()`.
 ///
 /// Change this to adjust the block time.
-pub const MILLISECS_PER_BLOCK: u64 = 6000;
+pub const MILLISECS_PER_BLOCK: u64 = 2000;
 
 // NOTE: Currently it is not possible to change the slot duration after the chain has started.
 //       Attempting to do so will brick block production.
@@ -285,6 +285,10 @@ pub use pallet_accounts;
 impl pallet_accounts::Config for Runtime {
 }
 
+pub use pallet_kitties;
+impl pallet_kitties::Config for Runtime {
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -306,6 +310,7 @@ construct_runtime!(
 		Accounts: pallet_accounts::{Pallet, Call, Storage},
 		Cats: pallet_cats::{Pallet, Call, Storage},
 		Dogs: pallet_dogs::{Pallet, Call, Storage},
+		Kitties: pallet_kitties::{Pallet/*, Call, Storage*/},
 	}
 );
 
