@@ -310,7 +310,7 @@ construct_runtime!(
 		Accounts: pallet_accounts::{Pallet, Call, Storage},
 		Cats: pallet_cats::{Pallet, Call, Storage},
 		Dogs: pallet_dogs::{Pallet, Call, Storage},
-		Kitties: pallet_kitties::{Pallet/*, Call, Storage*/},
+		Kitties: pallet_kitties::{Pallet, Storage/*, Call, Storage*/},
 	}
 );
 
