@@ -62,3 +62,20 @@ default-features = false
 git = 'https://github.com/paritytech/substrate.git'
 tag = 'monthly-2021-07'
 version = '3.0.0'
+
+[dependencies.pallet-balances]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+# optional = true
+tag = 'monthly-2021-07'
+version = '3.0.0'
+
+# [dependencies.sp-runtime]
+# default-features = false
+# git = 'https://github.com/paritytech/substrate.git'
+# # optional = true
+# tag = 'monthly-2021-07'
+# version = '3.0.0'
+
+# [dependencies]
+# pallet-balances = { default-features = false, version = '3.0.0' }

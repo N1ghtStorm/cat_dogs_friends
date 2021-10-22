@@ -31,6 +31,9 @@ edition = "2018"
 # branch = 'polkadot-v0.9.8'
 # version = '3.0.0'
 
+[dependencies]
+pallet-randomness-collective-flip = { git = 'https://github.com/paritytech/substrate.git',tag = 'monthly-2021-07', version = '3.0.0', default-features = false}
+
 [features]
 default = ['std']
 # runtime-benchmarks = ['frame-benchmarking']
@@ -48,12 +51,36 @@ default-features = false
 package = 'parity-scale-codec'
 version = '2.0.0'
 
+# [dependencies.frame-support]
+# default-features = false
+# git = 'https://github.com/paritytech/substrate.git'
+# branch = 'polkadot-v0.9.8'
+
+# [dependencies.frame-system]
+# default-features = false
+# git = 'https://github.com/paritytech/substrate.git'
+# branch = 'polkadot-v0.9.8'
+
 [dependencies.frame-support]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
-branch = 'polkadot-v0.9.8'
+tag = 'monthly-2021-07'
+version = '3.0.0'
 
 [dependencies.frame-system]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
-branch = 'polkadot-v0.9.8'
+tag = 'monthly-2021-07'
+version = '3.0.0'
+
+[dependencies.sp-io]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+tag = 'monthly-2021-07'
+version = '3.0.0'
+
+[dependencies.sp-runtime]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+tag = 'monthly-2021-07'
+version = '3.0.0'

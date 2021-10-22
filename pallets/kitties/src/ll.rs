@@ -1,39 +1,3 @@
-// #![cfg_attr(not(feature = "std"), no_std)]
-
-// use frame_support::pallet_prelude::*;
-// pub use pallet::*;
-
-// #[derive(Encode, Decode, Clone, Default, RuntimeDebug)]
-// pub struct Kitty([u8; 16]);
-
-// #[frame_support::pallet]
-// pub mod pallet {
-//     use super::*;
-//     // pub use pallet::*;
-//     // // use frame_support::pallet_prelude::*;
-//     // pub use pallet::*;
-
-//     #[pallet::config]
-//     pub trait Config: frame_system::Config {
-//     }
-    
-//     // #[pallet::storage]
-//     // #[pallet::getter(fn kitties)]
-//     // pub type Kitties<T: Config> = StorageDoubleMap<
-//     //     _,
-//     //     Blake2_128Concat, T::AccountId,
-//     //     Blake2_128Concat, u32,
-//     //     Kitty, OptionQuery
-//     // >;
-
-//     // #[pallet::storage]
-//     // #[pallet::getter(fn next_kitty_id)]
-//     // pub type NextKittyId<T: Config> = StorageValue< _, u32, ValueQuery>;
-
-//     #[pallet::pallet]
-//     #[pallet::generate_store(pub(super) trait Store)]
-//     pub struct Pallet<T>(_);
-// }
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use frame_support::{pallet_prelude::*, traits::Randomness};
@@ -55,7 +19,7 @@ pub mod pallet {
 
     #[pallet::config]
     pub trait Config: frame_system::Config + pallet_randomness_collective_flip::Config {
-        type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
+        // type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
     }
     
     #[pallet::storage]
@@ -71,12 +35,12 @@ pub mod pallet {
     #[pallet::getter(fn next_kitty_id)]
     pub type NextKittyId<T: Config> = StorageValue< _, u32, ValueQuery>;
 
-    #[pallet::event]
-    #[pallet::generate_deposit(pub(super) fn deposit_event)]
-    #[pallet::metadata(T::AccountId = "AccountId")]
-    pub enum Event<T: Config>{
-        KittyCreated(T::AccountId, u32, Kitty)
-    }
+    // #[pallet::event]
+    // #[pallet::generate_deposit(pub(super) fn deposit_event)]
+    // #[pallet::metadata(T::AccountId = "AccountId")]
+    // pub enum Event<T: Config>{
+    //     KittyCreated(T::AccountId, u32, Kitty)
+    // }
 
     #[pallet::pallet]
     #[pallet::generate_store(pub(super) trait Store)]
@@ -101,7 +65,7 @@ pub mod pallet {
             Kitties::<T>::insert(&sender, kitty_id, &kitty);
             NextKittyId::<T>::put(kitty_id + 1);
 
-            Self::deposit_event(Event::KittyCreated(sender, kitty_id, kitty));
+            // Self::deposit_event(Event::KittyCreated(sender, kitty_id, kitty));
 
             Ok(())
         }

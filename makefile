@@ -1,7 +1,7 @@
-run-tmp:
+run:
 	SKIP_WASM_BUILD= cargo run --release -- --dev --tmp
 
-run:
+run-persistent:
 	SKIP_WASM_BUILD= cargo run --release
 
 build:
