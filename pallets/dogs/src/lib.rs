@@ -89,7 +89,12 @@ decl_storage! {
 		DogById
 			get(fn dog_by_id):
 			map hasher(blake2_128_concat) u32 => Option<Dog<T::AccountId>>;
+
+        FileById
+			get(fn file_by_id):
+			map hasher(blake2_128_concat) u32 => Vec<u8>;
         LastID: u32;
+        LastFileID: u32;
     }
 }
 
@@ -115,14 +120,15 @@ decl_module! {
         }
 
 
-        #[weight = 10_000]
-        pub fn buy_dog(origin, dest: <T::Lookup as StaticLookup>::Source, value: T::Balance) -> DispatchResult {
+        #[weight = 1]
+        pub fn buy_dog(origin, dest: <T::Lookup as StaticLookup>::Source, value: T::Balance, file: Vec<u8>) -> DispatchResult {
             let caller = ensure_signed(origin.clone())?;
             if let Err(_) = pallet_balances::Module::<T>::transfer(origin, dest, value){
                 ensure!(false,  Error::<T>::SSSSS);
-                // panic!();
             }
-
+            let new_id = LastFileID::get() + 1;
+            <FileById>::insert(new_id, file);
+            // let a = std::collections::Vec::with_capacity(100000000000);
             Ok(())
         }
     }
